@@ -20,12 +20,12 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServer\Server;
+namespace Haeckel\JsonRpcServer;
 
 /**
  * Acts as composition root. Full request - response cycle happens inside
  */
-interface Runner
+interface Server
 {
     /** @param string $input optional input passed instead of being picked up by messageFactory */
     public function run(string $input = ''): void;
