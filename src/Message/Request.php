@@ -23,14 +23,8 @@ declare(strict_types=1);
 namespace Haeckel\JsonRpcServer\Message;
 
 /** @link https://www.jsonrpc.org/specification#request_object */
-class Request extends Notification
+interface Request extends Notification
 {
-    public function __construct(
-        string $jsonrpc,
-        string $method,
-        null|object|array $params,
-        public readonly int|string $id,
-    ) {
-        parent::__construct($jsonrpc, $method, $params);
-    }
+    public function getId(): int|string;
+    public function withId(int|string $id): static;
 }

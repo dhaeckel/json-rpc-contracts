@@ -25,31 +25,14 @@ namespace Haeckel\JsonRpcServer\Message;
 use Haeckel\JsonRpcServer\Message\ErrObj\ErrCode;
 
 /** @link https://www.jsonrpc.org/specification#error_object */
-class ErrorObject implements \JsonSerializable
+interface ErrorObject extends \JsonSerializable
 {
-    protected string $message;
+    public function getErrorCode(): int;
+    public function withErrorCode(int $code): static;
 
-    public function __construct(
-        public readonly ErrCode $code,
-        ?string $message = null,
-        public readonly mixed $data = null,
-    ) {
-        $this->message = $message ?? $code->getMessage();
-    }
+    public function getMessage(): string;
+    public function withMessage(string $message): static;
 
-    /** @return array<string,mixed> */
-    public function jsonSerialize(): array
-    {
-        $vars = \get_object_vars($this);
-        if ($vars['data'] === null) {
-            unset($vars['data']);
-        }
-
-        return $vars;
-    }
-
-    public function getMessage(): string
-    {
-        return $this->message;
-    }
+    public function getData(): mixed;
+    public function withData(mixed $data): static;
 }

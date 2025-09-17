@@ -23,13 +23,16 @@ declare(strict_types=1);
 namespace Haeckel\JsonRpcServer\Message;
 
 /** @link https://www.jsonrpc.org/specification#notification */
-class Notification
+interface Notification extends \JsonSerializable
 {
+    public function getJsonRpc(): string;
+    public function withJsonRpc(string $jsonRpc): static;
+
+    public function getMethod(): string;
+    public function withMethod(string $method): static;
+
+    /** @return null|object|array<mixed> */
+    public function getParams(): null|array|object;
     /** @param null|object|array<mixed> $params */
-    public function __construct(
-        public readonly string $jsonrpc,
-        public readonly string $method,
-        public readonly null|array|object $params,
-    ) {
-    }
+    public function withParams(null|array|object $params): static;
 }

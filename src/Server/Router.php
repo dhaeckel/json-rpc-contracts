@@ -25,7 +25,9 @@ namespace Haeckel\JsonRpcServer\Server;
 use Haeckel\JsonRpcServer\{Exception, Message};
 
 /**
- * used to match a method to a handler. returns the fully constructs handler
+ * used to match a method to a handler.
+ * Acts like a sub-composition root and constructs the dependency graph for the matched handler.
+ * The implementation probably takes a factory or a container for object creation.
  */
 interface Router
 {

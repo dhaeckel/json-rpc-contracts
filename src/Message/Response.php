@@ -23,36 +23,33 @@ declare(strict_types=1);
 namespace Haeckel\JsonRpcServer\Message;
 
 /** @link https://www.jsonrpc.org/specification#response_object */
-final class Response implements \JsonSerializable
+interface Response extends \JsonSerializable
 {
+    /** @return null|bool|float|int|string|\stdClass|\JsonSerializable|array<mixed> */
+    public function getResult(): null|array|bool|float|int|string|\stdClass|\JsonSerializable;
+
     /**
-     * @param null|array<int|string,mixed>|bool|float|int|string|\stdClass|\JsonSerializable $result
+     * @param null|bool|float|int|string|\stdClass|\JsonSerializable|array<mixed> $result
      *
-     * @throws \DomainException exactly one of result and code must not be null(omitted) per spec
+     * @throws \DomainException if error is null and passed arg is null,
+     * or if error is not null and arg is not null.
+     * exactly one of result and error must not be null(omitted) per spec.
      */
-    public function __construct(
-        public readonly null|array|bool|float|int|string|\stdClass|\JsonSerializable $result,
-        public readonly null|int|string $id,
-        public readonly null|ErrorObject $error = null,
-        public readonly string $jsonrpc = '2.0',
-    ) {
-        if (($error === null && $result === null) || ($error !== null && $result !== null)) {
-            throw new \DomainException(
-                message: 'exactly one of the members "result" or "error" must not be null'
-            );
-        }
-    }
+    public function withResult(
+        null|array|bool|float|int|string|\stdClass|\JsonSerializable $result
+    ): static;
 
-    public function jsonSerialize(): mixed
-    {
-        $vars = \get_object_vars($this);
-        if ($this->result === null) {
-            unset($vars['result']);
-        }
-        if ($this->error === null) {
-            unset($vars['error']);
-        }
+    public function getId(): null|int|string;
+    public function withId(null|int|string $id): static;
 
-        return $vars;
-    }
+    public function getError(): null|ErrorObject;
+    /**
+     * @throws \DomainException if result is null and passed arg is null,
+     * or if result is not null and arg is not null.
+     * exactly one of result and error must not be null(omitted) per spec.
+     */
+    public function withError(null|ErrorObject $error): static;
+
+    public function getJsonrpc(): string;
+    public function withJsonrpc(string $jsonrpc): static;
 }
