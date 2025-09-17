@@ -31,5 +31,8 @@
             "Composer\\Config::disableProcessTimeout",
             "vendor/bin/phpcbf src/"
         ]
+    },
+    "require": {
+        "php": "^8.1"
     }
 }
