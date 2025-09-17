@@ -22,6 +22,14 @@
         "phpstan": [
             "Composer\\Config::disableProcessTimeout",
             "vendor/bin/phpstan"
+        ],
+        "cs": [
+            "Composer\\Config::disableProcessTimeout",
+            "vendor/bin/phpcs src/"
+        ],
+        "cbf": [
+            "Composer\\Config::disableProcessTimeout",
+            "vendor/bin/phpcbf src/"
         ]
     }
 }
