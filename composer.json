@@ -1,0 +1,27 @@
+{
+    "name": "haeckel/json-rpc-server-2.0",
+    "description": "Interfaces for json rpc server framework, inspired by psr-7",
+    "type": "library",
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^4.0",
+        "phpstan/phpstan": "^2.1"
+    },
+    "license": "LGPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Haeckel\\JsonRpcServer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dominik Häckel"
+        }
+    ],
+    "minimum-stability": "stable",
+    "scripts": {
+        "phpstan": [
+            "Composer\\Config::disableProcessTimeout",
+            "vendor/bin/phpstan"
+        ]
+    }
+}
