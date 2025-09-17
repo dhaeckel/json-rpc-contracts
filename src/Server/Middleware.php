@@ -20,9 +20,9 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServer\Server;
+namespace Haeckel\JsonRpcServerContract\Server;
 
-use Haeckel\JsonRpcServer\Message;
+use Haeckel\JsonRpcServerContract\Message;
 
 /**
  * can be used compose classes the offer general services,

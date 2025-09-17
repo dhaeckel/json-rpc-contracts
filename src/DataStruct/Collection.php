@@ -20,7 +20,7 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServer\DataStruct;
+namespace Haeckel\JsonRpcServerContract\DataStruct;
 
 /**
  * @template V

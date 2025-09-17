@@ -20,7 +20,7 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServer\Message\ErrObj;
+namespace Haeckel\JsonRpcServerContract\Message\ErrObj;
 
 /** @link https://www.jsonrpc.org/specification#error_object */
 enum PredefErrCode: int implements ErrCode

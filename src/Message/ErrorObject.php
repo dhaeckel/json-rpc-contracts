@@ -20,7 +20,7 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServer\Message;
+namespace Haeckel\JsonRpcServerContract\Message;
 
 use Haeckel\JsonRpcServer\Message\ErrObj\ErrCode;
 

@@ -20,7 +20,7 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServer\Exception;
+namespace Haeckel\JsonRpcServerContract\Exception;
 
 /** @see Haeckel\JsonRpcServer\Message\ErrObj\PredefErrCode::ParseError */
 interface JsonParse extends JsonRpcError

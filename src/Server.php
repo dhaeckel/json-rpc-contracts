@@ -20,7 +20,7 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServer;
+namespace Haeckel\JsonRpcServerContract;
 
 /**
  * Acts as composition root. Full request - response cycle happens inside

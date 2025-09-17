@@ -20,9 +20,9 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServer\Exception;
+namespace Haeckel\JsonRpcServerContract\Exception;
 
-use Haeckel\JsonRpcServer\Message;
+use Haeckel\JsonRpcServerContract\Message;
 
 interface JsonRpcError extends \Throwable
 {

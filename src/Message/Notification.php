@@ -20,7 +20,7 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServer\Message;
+namespace Haeckel\JsonRpcServerContract\Message;
 
 /** @link https://www.jsonrpc.org/specification#notification */
 interface Notification extends \JsonSerializable

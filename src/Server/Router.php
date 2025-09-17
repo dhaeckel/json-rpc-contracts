@@ -20,9 +20,9 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServer\Server;
+namespace Haeckel\JsonRpcServerContract\Server;
 
-use Haeckel\JsonRpcServer\{Exception, Message};
+use Haeckel\JsonRpcServerContract\{Exception, Message};
 
 /**
  * used to match a method to a handler.
