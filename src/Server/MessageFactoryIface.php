@@ -20,13 +20,17 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServerContract\Exception;
+namespace Haeckel\JsonRpcServerContract\Server;
 
-use Haeckel\JsonRpcServerContract\Message;
+use Haeckel\JsonRpcServerContract\{Exception, Message};
 
-interface JsonRpcError extends \Throwable
+interface MessageFactoryIface
 {
-    public function getRequest(): ?Message\Request;
-
-    public function getErrorObject(): Message\ErrorObject;
+    /**
+     * @throws Exception\JsonParseIface if json cannot be parsed
+     * @throws Exception\InvalidRequestIface if input violates request schema
+     */
+    public function newMessage(
+        string $jsonInput = ''
+    ): Message\BatchRequestIface|Message\NotificationIface|Message\RequestIface;
 }

@@ -20,11 +20,13 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServerContract\Message\ErrObj;
+namespace Haeckel\JsonRpcServerContract\Server;
 
-/** @link @link https://www.jsonrpc.org/specification#error_object */
-interface ErrCode
+use Haeckel\JsonRpcServerContract\Message;
+
+/** serialize the response and output it */
+interface EmitterIface
 {
-    public function getCode(): int;
-    public function getMessage(): string;
+    /** @throws \Throwable */
+    public function emit(Message\ResponseIface|Message\BatchResponseIface $response): void;
 }

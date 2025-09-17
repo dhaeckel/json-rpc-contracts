@@ -20,17 +20,22 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServerContract\Server;
+namespace Haeckel\JsonRpcServerContract\Message;
 
-use Haeckel\JsonRpcServerContract\{Exception, Message};
+use Haeckel\JsonRpcServerContract\DataStruct\CollectionIface;
 
-interface MessageFactory
+/**
+ * @extends CollectionIface<ResponseIface>
+ *
+ * @link https://www.jsonrpc.org/specification#batch
+ */
+interface BatchResponseIface extends CollectionIface
 {
-    /**
-     * @throws Exception\JsonParse if json cannot be parsed
-     * @throws Exception\InvalidRequest if input violates request schema
-     */
-    public function newMessage(
-        string $jsonInput = ''
-    ): Message\BatchRequest|Message\Notification|Message\Request;
+    /** @no-named-arguments */
+    public function add(ResponseIface ...$values): void;
+
+    /** @no-named-arguments */
+    public function remove(ResponseIface ...$elements): void;
+
+    public function current(): ?ResponseIface;
 }

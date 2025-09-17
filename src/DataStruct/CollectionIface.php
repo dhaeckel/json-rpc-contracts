@@ -20,13 +20,30 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServerContract;
+namespace Haeckel\JsonRpcServerContract\DataStruct;
 
 /**
- * Acts as composition root. Full request - response cycle happens inside
+ * @template V
+ * @extends \Iterator<int,V>
  */
-interface Server
+interface CollectionIface extends \Countable, \Iterator, \JsonSerializable
 {
-    /** @param string $input optional input passed instead of being picked up by messageFactory */
-    public function run(string $input = ''): void;
+    public function isEmpty(): bool;
+
+    /** @return array<int,V> */
+    public function toArray(): array;
+
+    /**
+     * @no-named-arguments
+     * @param V $elements
+     * @throws \TypeError
+     */
+    public function genericAdd(mixed ...$elements): void;
+
+    /**
+     * @no-named-arguments
+     * @param V $elements
+     * @throws \TypeError
+     */
+    public function genericRemove(mixed ...$elements): void;
 }

@@ -20,19 +20,9 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServerContract\Message;
+namespace Haeckel\JsonRpcServerContract\Exception;
 
-use Haeckel\JsonRpcServer\Message\ErrObj\ErrCode;
-
-/** @link https://www.jsonrpc.org/specification#error_object */
-interface ErrorObject extends \JsonSerializable
+/** @see Haeckel\JsonRpcServer\Message\ErrObj\PredefErrCode::InternalError */
+interface InternalErrorIface extends JsonRpcErrorIface
 {
-    public function getErrorCode(): int;
-    public function withErrorCode(int $code): static;
-
-    public function getMessage(): string;
-    public function withMessage(string $message): static;
-
-    public function getData(): mixed;
-    public function withData(mixed $data): static;
 }

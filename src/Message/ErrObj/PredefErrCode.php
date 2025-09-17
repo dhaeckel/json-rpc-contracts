@@ -23,7 +23,7 @@ declare(strict_types=1);
 namespace Haeckel\JsonRpcServerContract\Message\ErrObj;
 
 /** @link https://www.jsonrpc.org/specification#error_object */
-enum PredefErrCode: int implements ErrCode
+enum PredefErrCode: int implements ErrCodeIface
 {
     /**
      * Invalid JSON was received by the server or

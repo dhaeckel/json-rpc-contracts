@@ -20,22 +20,16 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServerContract\Message;
+namespace Haeckel\JsonRpcServerContract\Server;
 
-use Haeckel\JsonRpcServerContract\DataStruct\Collection;
+use Haeckel\JsonRpcServerContract\{Exception, Message};
 
 /**
- * @extends Collection<Response>
- *
- * @link https://www.jsonrpc.org/specification#batch
+ * handlers for notifications. These do not generate responses as defined in the spec.
+ * @link https://www.jsonrpc.org/specification#notification
  */
-interface BatchResponse extends Collection
+interface NotificationHandlerIface
 {
-    /** @no-named-arguments */
-    public function add(Response ...$values): void;
-
-    /** @no-named-arguments */
-    public function remove(Response ...$elements): void;
-
-    public function current(): ?Response;
+    /** @throws Exception\JsonRpcErrorIface */
+    public function handle(Message\NotificationIface $notification): void;
 }

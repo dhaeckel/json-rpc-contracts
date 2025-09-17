@@ -22,11 +22,20 @@ declare(strict_types=1);
 
 namespace Haeckel\JsonRpcServerContract\Server;
 
-use Haeckel\JsonRpcServerContract\Message;
+use Haeckel\JsonRpcServerContract\{Exception, Message};
 
-/** serialize the response and output it */
-interface Emitter
+/**
+ * used to match a method to a handler.
+ * Acts like a sub-composition root and constructs the dependency graph for the matched handler.
+ * The implementation probably takes a factory or a container for object creation.
+ */
+interface RouterIface
 {
-    /** @throws \Throwable */
-    public function emit(Message\Response|Message\BatchResponse $response): void;
+    /** @throws Exception\MethodNotFoundIface */
+    public function getRequestHandler(Message\RequestIface $request): RequestHandlerIface;
+
+    /** @throws Exception\MethodNotFoundIface */
+    public function getNotificationHandler(
+        Message\NotificationIface $notification,
+    ): NotificationHandlerIface;
 }

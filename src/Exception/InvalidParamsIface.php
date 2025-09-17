@@ -22,7 +22,7 @@ declare(strict_types=1);
 
 namespace Haeckel\JsonRpcServerContract\Exception;
 
-/** @see Haeckel\JsonRpcServer\Message\ErrObj\PredefErrCode::MethodNotFound */
-interface MethodNotFound extends JsonRpcError
+/** @see Haeckel\JsonRpcServer\Message\ErrObj\PredefErrCode::InvalidParams */
+interface InvalidParamsIface extends JsonRpcErrorIface
 {
 }

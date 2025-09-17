@@ -20,12 +20,9 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServerContract\Server;
+namespace Haeckel\JsonRpcServerContract\Exception;
 
-use Haeckel\JsonRpcServerContract\{Exception, Message};
-
-interface RequestHandler
+/** @see Haeckel\JsonRpcServer\Message\ErrObj\PredefErrCode::ParseError */
+interface JsonParseIface extends JsonRpcErrorIface
 {
-    /** @throws Exception\JsonRpcError */
-    public function handle(Message\Request $request): Message\Response;
 }

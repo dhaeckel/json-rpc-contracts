@@ -20,33 +20,9 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServerContract\Message;
+namespace Haeckel\JsonRpcServerContract\Exception;
 
-use Haeckel\JsonRpcServerContract\DataStruct\Collection;
-
-/**
- * @extends Collection<Request|Notification>
- *
- * @link https://www.jsonrpc.org/specification#batch
- */
-interface BatchRequest extends Collection
+/** @see Haeckel\JsonRpcServer\Message\ErrObj\PredefErrCode::InvalidRequest */
+interface InvalidRequestIface extends JsonRpcErrorIface
 {
-    /** @no-named-arguments */
-    public function remove(Request|Notification ...$elements): void;
-
-    public function current(): null|Request|Notification;
-
-    /** @no-named-arguments */
-    public function add(Request|Notification ...$values): void;
-
-    /**
-     * if any request of a batch is invalid or hast invalid json, add the error response here
-     * @no-named-arguments
-     */
-    public function addResponseForInvalidReq(Response ...$response): void;
-
-    /**
-     * @return list<Response>
-     */
-    public function getResponsesForInvalidRequests(): array;
 }

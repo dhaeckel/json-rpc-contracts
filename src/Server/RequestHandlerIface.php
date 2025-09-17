@@ -22,16 +22,10 @@ declare(strict_types=1);
 
 namespace Haeckel\JsonRpcServerContract\Server;
 
-use Haeckel\JsonRpcServerContract\Message;
+use Haeckel\JsonRpcServerContract\{Exception, Message};
 
-/**
- * can be used compose classes the offer general services,
- * e.g. further parsing of params, authentication etc.
- */
-interface Middleware
+interface RequestHandlerIface
 {
-    public function process(
-        Message\Notification|Message\Request $request,
-        RequestHandler|NotificationHandler $handler,
-    ): ?Message\Response;
+    /** @throws Exception\JsonRpcErrorIface */
+    public function handle(Message\RequestIface $request): Message\ResponseIface;
 }

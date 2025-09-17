@@ -20,9 +20,11 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServerContract\Exception;
+namespace Haeckel\JsonRpcServerContract\Message\ErrObj;
 
-/** @see Haeckel\JsonRpcServer\Message\ErrObj\PredefErrCode::InvalidParams */
-interface InvalidParams extends JsonRpcError
+/** @link @link https://www.jsonrpc.org/specification#error_object */
+interface ErrCodeIface
 {
+    public function getCode(): int;
+    public function getMessage(): string;
 }

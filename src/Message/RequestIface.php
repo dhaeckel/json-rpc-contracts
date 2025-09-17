@@ -20,16 +20,11 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServerContract\Server;
+namespace Haeckel\JsonRpcServerContract\Message;
 
-use Haeckel\JsonRpcServerContract\{Exception, Message};
-
-/**
- * handlers for notifications. These do not generate responses as defined in the spec.
- * @link https://www.jsonrpc.org/specification#notification
- */
-interface NotificationHandler
+/** @link https://www.jsonrpc.org/specification#request_object */
+interface RequestIface extends NotificationIface
 {
-    /** @throws Exception\JsonRpcError */
-    public function handle(Message\Notification $notification): void;
+    public function getId(): int|string;
+    public function withId(int|string $id): static;
 }

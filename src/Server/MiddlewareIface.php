@@ -20,19 +20,18 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServerContract\Message;
+namespace Haeckel\JsonRpcServerContract\Server;
 
-/** @link https://www.jsonrpc.org/specification#notification */
-interface Notification extends \JsonSerializable
+use Haeckel\JsonRpcServerContract\Message;
+
+/**
+ * can be used compose classes the offer general services,
+ * e.g. further parsing of params, authentication etc.
+ */
+interface MiddlewareIface
 {
-    public function getJsonRpc(): string;
-    public function withJsonRpc(string $jsonRpc): static;
-
-    public function getMethod(): string;
-    public function withMethod(string $method): static;
-
-    /** @return null|object|array<mixed> */
-    public function getParams(): null|array|object;
-    /** @param null|object|array<mixed> $params */
-    public function withParams(null|array|object $params): static;
+    public function process(
+        Message\NotificationIface|Message\RequestIface $request,
+        RequestHandlerIface|NotificationHandlerIface $handler,
+    ): ?Message\ResponseIface;
 }

@@ -23,7 +23,7 @@ declare(strict_types=1);
 namespace Haeckel\JsonRpcServerContract\Message;
 
 /** @link https://www.jsonrpc.org/specification#response_object */
-interface Response extends \JsonSerializable
+interface ResponseIface extends \JsonSerializable
 {
     /** @return null|bool|float|int|string|\stdClass|\JsonSerializable|array<mixed> */
     public function getResult(): null|array|bool|float|int|string|\stdClass|\JsonSerializable;
@@ -42,13 +42,13 @@ interface Response extends \JsonSerializable
     public function getId(): null|int|string;
     public function withId(null|int|string $id): static;
 
-    public function getError(): null|ErrorObject;
+    public function getError(): null|ErrorObjectIface;
     /**
      * @throws \DomainException if result is null and passed arg is null,
      * or if result is not null and arg is not null.
      * exactly one of result and error must not be null(omitted) per spec.
      */
-    public function withError(null|ErrorObject $error): static;
+    public function withError(null|ErrorObjectIface $error): static;
 
     public function getJsonrpc(): string;
     public function withJsonrpc(string $jsonrpc): static;

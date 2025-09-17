@@ -20,20 +20,9 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServerContract\Server;
+namespace Haeckel\JsonRpcServerContract\Exception;
 
-use Haeckel\JsonRpcServerContract\{Exception, Message};
-
-/**
- * used to match a method to a handler.
- * Acts like a sub-composition root and constructs the dependency graph for the matched handler.
- * The implementation probably takes a factory or a container for object creation.
- */
-interface Router
+/** @see Haeckel\JsonRpcServer\Message\ErrObj\PredefErrCode::MethodNotFound */
+interface MethodNotFoundIface extends JsonRpcErrorIface
 {
-    /** @throws Exception\MethodNotFound */
-    public function getRequestHandler(Message\Request $request): RequestHandler;
-
-    /** @throws Exception\MethodNotFound */
-    public function getNotificationHandler(Message\Notification $notification): NotificationHandler;
 }
