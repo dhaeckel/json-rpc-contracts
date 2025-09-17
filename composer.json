@@ -1,6 +1,6 @@
 {
-    "name": "haeckel/json-rpc-server-2.0",
-    "description": "Interfaces for json rpc server framework, inspired by psr-7",
+    "name": "haeckel/json-rpc-server-contracts",
+    "description": "Small framework for writing JSON-RPC 2.0 servers. Inspired by psr-15",
     "type": "library",
     "require-dev": {
         "squizlabs/php_codesniffer": "^4.0",

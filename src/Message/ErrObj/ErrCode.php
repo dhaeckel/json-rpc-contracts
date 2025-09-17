@@ -20,36 +20,11 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServer\Message;
+namespace Haeckel\JsonRpcServer\Message\ErrObj;
 
-use Haeckel\JsonRpcServer\Message\ErrObj\ErrCode;
-
-/** @link https://www.jsonrpc.org/specification#error_object */
-class ErrorObject implements \JsonSerializable
+/** @link @link https://www.jsonrpc.org/specification#error_object */
+interface ErrCode
 {
-    protected string $message;
-
-    public function __construct(
-        public readonly ErrCode $code,
-        ?string $message = null,
-        public readonly mixed $data = null,
-    ) {
-        $this->message = $message ?? $code->getMessage();
-    }
-
-    /** @return array<string,mixed> */
-    public function jsonSerialize(): array
-    {
-        $vars = \get_object_vars($this);
-        if ($vars['data'] === null) {
-            unset($vars['data']);
-        }
-
-        return $vars;
-    }
-
-    public function getMessage(): string
-    {
-        return $this->message;
-    }
+    public function getCode(): int;
+    public function getMessage(): string;
 }
