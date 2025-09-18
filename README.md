@@ -15,6 +15,4 @@ to discuss what you would like to change.
 
 ## License
 
-[LGPL-3.0](https://choosealicense.com/licenses/lgpl-3.0/)
-
-See [here](LICENSE.md) for a local copy of the license.
+[LGPL-3.0](LICENSE.md)
