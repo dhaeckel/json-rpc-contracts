@@ -26,7 +26,6 @@ use Haeckel\JsonRpcServerContract\Message;
 
 interface JsonRpcErrorIface extends \Throwable
 {
-    public function getRequest(): ?Message\RequestIface;
-
     public function getErrorObject(): Message\ErrorObjectIface;
+    public function getRequest(): ?Message\RequestIface;
 }

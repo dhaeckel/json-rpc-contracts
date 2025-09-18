@@ -28,22 +28,25 @@ namespace Haeckel\JsonRpcServerContract\DataStruct;
  */
 interface CollectionIface extends \Countable, \Iterator, \JsonSerializable
 {
+    /**
+     * @no-named-arguments
+     * @param V $elements
+     * @throws \TypeError
+     */
+    public function addGeneric(mixed ...$elements): void;
+
+    /**
+     * @no-named-arguments
+     * @param V $elements
+     * @throws \TypeError
+     */
+    public function removeGeneric(mixed ...$elements): void;
+
+    /** Removes all of the elements from this collection */
+    public function clear(): void;
+
     public function isEmpty(): bool;
 
     /** @return array<int,V> */
     public function toArray(): array;
-
-    /**
-     * @no-named-arguments
-     * @param V $elements
-     * @throws \TypeError
-     */
-    public function genericAdd(mixed ...$elements): void;
-
-    /**
-     * @no-named-arguments
-     * @param V $elements
-     * @throws \TypeError
-     */
-    public function genericRemove(mixed ...$elements): void;
 }

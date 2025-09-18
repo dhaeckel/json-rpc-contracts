@@ -34,8 +34,8 @@ interface BatchResponseIface extends CollectionIface
     /** @no-named-arguments */
     public function add(ResponseIface ...$elements): void;
 
+    public function current(): ?ResponseIface;
+
     /** @no-named-arguments */
     public function remove(ResponseIface ...$elements): void;
-
-    public function current(): ?ResponseIface;
 }

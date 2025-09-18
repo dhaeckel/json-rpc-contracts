@@ -32,12 +32,12 @@ use Haeckel\JsonRpcServerContract\DataStruct\CollectionIface;
 interface BatchRequestIface extends CollectionIface
 {
     /** @no-named-arguments */
-    public function remove(RequestIface|NotificationIface ...$elements): void;
+    public function add(RequestIface|NotificationIface ...$elements): void;
 
     public function current(): null|RequestIface|NotificationIface;
 
     /** @no-named-arguments */
-    public function add(RequestIface|NotificationIface ...$elements): void;
+    public function remove(RequestIface|NotificationIface ...$elements): void;
 
     /**
      * if any request of a batch is invalid or hast invalid json, add the error response here
