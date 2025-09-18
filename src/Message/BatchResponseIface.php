@@ -32,7 +32,7 @@ use Haeckel\JsonRpcServerContract\DataStruct\CollectionIface;
 interface BatchResponseIface extends CollectionIface
 {
     /** @no-named-arguments */
-    public function add(ResponseIface ...$values): void;
+    public function add(ResponseIface ...$elements): void;
 
     /** @no-named-arguments */
     public function remove(ResponseIface ...$elements): void;

@@ -37,7 +37,7 @@ interface BatchRequestIface extends CollectionIface
     public function current(): null|RequestIface|NotificationIface;
 
     /** @no-named-arguments */
-    public function add(RequestIface|NotificationIface ...$values): void;
+    public function add(RequestIface|NotificationIface ...$elements): void;
 
     /**
      * if any request of a batch is invalid or hast invalid json, add the error response here
