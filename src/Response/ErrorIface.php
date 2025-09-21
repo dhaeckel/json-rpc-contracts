@@ -28,6 +28,6 @@ namespace Haeckel\JsonRpcServerContract\Response;
  */
 interface ErrorIface extends BaseIface
 {
-    public function getError(): null|Error\ErrObjectIface;
-    public function withError(null|Error\ErrObjectIface $error): static;
+    public function getError(): Error\ErrObjectIface;
+    public function withError(Error\ErrObjectIface $error): static;
 }
