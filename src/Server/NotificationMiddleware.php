@@ -6,6 +6,11 @@ namespace Haeckel\JsonRpcServerContract\Server;
 
 use Haeckel\JsonRpcServerContract\Message;
 
+/**
+ * Split from general Middleware interface to provide unambiguous return types for this and
+ * RequestMiddlewareIface.
+ * may be implemented in the same class as the RequestHandlerIface for optimal code reuse.
+ */
 interface NotificationMiddleware
 {
     public function processNotification(
