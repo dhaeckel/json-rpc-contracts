@@ -20,13 +20,16 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServerContract\Server;
+namespace Haeckel\JsonRpcServerContract\Response;
 
-use Haeckel\JsonRpcServerContract\{Exception, Message, Response};
-
-interface RequestHandlerIface
+/** @link https://www.jsonrpc.org/specification#response_object */
+interface SuccessIface extends BaseIface
 {
-    public function handle(
-        Message\RequestIface $request,
-    ): Response\ErrorIface|Response\SuccessIface;
+    /** @return array<mixed>|bool|float|int|string|\stdClass|\JsonSerializable */
+    public function getResult(): array|bool|float|int|string|\stdClass|\JsonSerializable;
+
+    /** @param array<mixed>|bool|float|int|string|\stdClass|\JsonSerializable $result */
+    public function withResult(
+        array|bool|float|int|string|\stdClass|\JsonSerializable $result,
+    ): static;
 }

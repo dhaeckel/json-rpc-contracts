@@ -22,11 +22,12 @@ declare(strict_types=1);
 
 namespace Haeckel\JsonRpcServerContract\Server;
 
-use Haeckel\JsonRpcServerContract\Message;
+use Haeckel\JsonRpcServerContract\Response;
 
 /** serialize the response and output it */
 interface EmitterIface
 {
-    /** @throws \Throwable */
-    public function emit(Message\ResponseIface|Message\BatchResponseIface $response): void;
+    public function emit(
+        Response\BatchIface|Response\ErrorIface|Response\SuccessIface $response,
+    ): void;
 }

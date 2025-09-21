@@ -20,22 +20,22 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServerContract\Message;
+namespace Haeckel\JsonRpcServerContract\Response;
 
 use Haeckel\JsonRpcServerContract\DataStruct\CollectionIface;
 
 /**
- * @extends CollectionIface<ResponseIface>
+ * @extends CollectionIface<ErrorIface|SuccessIface>
  *
  * @link https://www.jsonrpc.org/specification#batch
  */
-interface BatchResponseIface extends CollectionIface
+interface BatchIface extends CollectionIface
 {
     /** @no-named-arguments */
-    public function add(ResponseIface ...$elements): void;
+    public function add(ErrorIface|SuccessIface ...$elements): void;
 
-    public function current(): ?ResponseIface;
+    public function current(): null|ErrorIface|SuccessIface;
 
     /** @no-named-arguments */
-    public function remove(ResponseIface ...$elements): void;
+    public function remove(ErrorIface|SuccessIface ...$elements): void;
 }

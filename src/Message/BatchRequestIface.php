@@ -22,14 +22,14 @@ declare(strict_types=1);
 
 namespace Haeckel\JsonRpcServerContract\Message;
 
-use Haeckel\JsonRpcServerContract\DataStruct\CollectionIface;
+use Haeckel\JsonRpcServerContract\{DataStruct, Response};
 
 /**
- * @extends CollectionIface<RequestIface|NotificationIface>
+ * @extends DataStruct\CollectionIface<RequestIface|NotificationIface>
  *
  * @link https://www.jsonrpc.org/specification#batch
  */
-interface BatchRequestIface extends CollectionIface
+interface BatchRequestIface extends DataStruct\CollectionIface
 {
     /** @no-named-arguments */
     public function add(RequestIface|NotificationIface ...$elements): void;
@@ -43,10 +43,10 @@ interface BatchRequestIface extends CollectionIface
      * if any request of a batch is invalid or hast invalid json, add the error response here
      * @no-named-arguments
      */
-    public function addResponseForInvalidReq(ResponseIface ...$response): void;
+    public function addResponseForInvalidReq(Response\ErrorIface ...$response): void;
 
     /**
-     * @return list<ResponseIface>
+     * @return list<Response\ErrorIface>
      */
     public function getResponsesForInvalidRequests(): array;
 }
