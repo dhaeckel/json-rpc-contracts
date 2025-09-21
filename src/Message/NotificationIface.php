@@ -52,10 +52,10 @@ interface NotificationIface extends \JsonSerializable
      */
     public function withMethod(string $method): static;
 
-    /** @return null|object|list<mixed> */
+    /** @return null|object|array<int,mixed> */
     public function getParams(): null|array|object;
     /**
-     * @param null|object|list<mixed> $params
+     * @param null|object|array<int,mixed> $params
      * A Structured value that holds the parameter values to be used during the invocation of the
      * method. This member MAY be omitted (in this case with null).
      *
