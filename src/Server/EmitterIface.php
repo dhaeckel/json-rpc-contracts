@@ -24,9 +24,9 @@ namespace Haeckel\JsonRpcServerContract\Server;
 
 use Haeckel\JsonRpcServerContract\Response;
 
-/** serialize the response and output it */
 interface EmitterIface
 {
+    /** serialize the response and output it */
     public function emit(
         Response\BatchIface|Response\ErrorIface|Response\SuccessIface $response,
     ): void;

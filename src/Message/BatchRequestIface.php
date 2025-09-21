@@ -25,9 +25,13 @@ namespace Haeckel\JsonRpcServerContract\Message;
 use Haeckel\JsonRpcServerContract\{DataStruct, Response};
 
 /**
- * @extends DataStruct\CollectionIface<RequestIface|NotificationIface>
+ * To send several Request objects at the same time,
+ * the Client MAY send an Array filled with Request objects.
  *
  * @link https://www.jsonrpc.org/specification#batch
+ *
+ * @extends DataStruct\CollectionIface<RequestIface|NotificationIface>
+ *
  */
 interface BatchRequestIface extends DataStruct\CollectionIface
 {

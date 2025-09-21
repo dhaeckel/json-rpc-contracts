@@ -22,9 +22,23 @@ declare(strict_types=1);
 
 namespace Haeckel\JsonRpcServerContract\Message;
 
-/** @link https://www.jsonrpc.org/specification#request_object */
+/**
+ * A rpc call is represented by sending a Request object to a Server.
+ *
+ * The Server MUST reply with the same value in the Response object if included.
+ * This member is used to correlate the context between the two objects.
+ * @link https://www.jsonrpc.org/specification#request_object
+ */
 interface RequestIface extends NotificationIface
 {
     public function getId(): int|string;
+    /**
+     * @param int|string $id
+     * An identifier established by the Client that MUST contain a String, Number, or NULL value.
+     * The value SHOULD normally not be Null [1] and Numbers SHOULD NOT contain fractional parts [2]
+     *
+     * ATTENTION: this implementation is strict with the with the interpretation of allowable types
+     * and only allows string and int as it's type.
+     */
     public function withId(int|string $id): static;
 }

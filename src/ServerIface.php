@@ -22,11 +22,9 @@ declare(strict_types=1);
 
 namespace Haeckel\JsonRpcServerContract;
 
-/**
- * Acts as composition root. Full request - response cycle happens inside
- */
+/** Acts as composition root. Full request - response cycle happens inside */
 interface ServerIface
 {
-    /** @param string $input optional input passed instead of being picked up by messageFactory */
+    /** @param string $input optional input passed instead of being picked up by MessageFactory */
     public function run(string $input = ''): void;
 }

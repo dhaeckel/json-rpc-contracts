@@ -22,10 +22,10 @@ declare(strict_types=1);
 
 namespace Haeckel\JsonRpcServerContract\Exception;
 
-use Haeckel\JsonRpcServerContract\Message;
+use Haeckel\JsonRpcServerContract\{Message, Response};
 
 interface JsonRpcErrorIface extends \Throwable
 {
-    public function getErrorObject(): Message\ErrorObjectIface;
+    public function getErrorObject(): Response\Error\ErrObjectIface;
     public function getRequest(): ?Message\RequestIface;
 }

@@ -20,7 +20,7 @@
 
 declare(strict_types=1);
 
-namespace Haeckel\JsonRpcServerContract\Message\ErrObj;
+namespace Haeckel\JsonRpcServerContract\Response\Error;
 
 /** @link @link https://www.jsonrpc.org/specification#error_object */
 interface ErrCodeIface

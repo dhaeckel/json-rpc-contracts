@@ -31,6 +31,6 @@ interface MessageFactoryIface
      * @throws Exception\InvalidRequestIface if input violates request schema
      */
     public function newMessage(
-        string $jsonInput = ''
+        string $jsonInput = '',
     ): Message\BatchRequestIface|Message\NotificationIface|Message\RequestIface;
 }

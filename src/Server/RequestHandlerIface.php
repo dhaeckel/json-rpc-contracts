@@ -22,7 +22,7 @@ declare(strict_types=1);
 
 namespace Haeckel\JsonRpcServerContract\Server;
 
-use Haeckel\JsonRpcServerContract\{Exception, Message, Response};
+use Haeckel\JsonRpcServerContract\{Message, Response};
 
 interface RequestHandlerIface
 {

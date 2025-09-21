@@ -25,13 +25,21 @@ namespace Haeckel\JsonRpcServerContract\Server;
 use Haeckel\JsonRpcServerContract\{Message, Response};
 
 /**
- * can be used compose classes the offer general services,
- * e.g. further parsing of params, authentication etc.
+ * Participant in processing a request and response.
+ *
+ * A middleware component participates in processing a JSON-RPC Request:
+ * by acting on the request, generating the response, or forwarding the
+ * request to a subsequent middleware and possibly acting on its response.
  */
-interface MiddlewareIface
+interface RequestMiddlewareIface
 {
+    /**
+     * Processes an incoming request in order to produce a response.
+     * If unable to produce the response itself,
+     * it may delegate to the provided handler to do so.
+     */
     public function process(
-        Message\NotificationIface|Message\RequestIface $request,
-        RequestHandlerIface|NotificationHandlerIface $handler,
-    ): null|Response\ErrorIface|Response\SuccessIface;
+        Message\RequestIface $request,
+        RequestHandlerIface $handler,
+    ): Response\ErrorIface|Response\SuccessIface;
 }

@@ -25,10 +25,16 @@ namespace Haeckel\JsonRpcServerContract\Response;
 /** @link https://www.jsonrpc.org/specification#response_object */
 interface SuccessIface extends BaseIface
 {
-    /** @return array<mixed>|bool|float|int|string|\stdClass|\JsonSerializable */
+    /** @return array<int|string,mixed>|bool|float|int|string|\stdClass|\JsonSerializable $result */
     public function getResult(): array|bool|float|int|string|\stdClass|\JsonSerializable;
 
-    /** @param array<mixed>|bool|float|int|string|\stdClass|\JsonSerializable $result */
+    /**
+     * @param array<int|string,mixed>|bool|float|int|string|\stdClass|\JsonSerializable $result
+     * The value of this member is determined by the method invoked on the Server.
+     *
+     * If you pass an array, ensure the values are all json serializable,
+     * particularly if you pass nested arrays.
+     */
     public function withResult(
         array|bool|float|int|string|\stdClass|\JsonSerializable $result,
     ): static;
