@@ -70,4 +70,73 @@ interface NotificationIface extends \JsonSerializable
      * @link https://www.jsonrpc.org/specification#parameter_structures
      */
     public function withParams(null|array|object $params): static;
+
+    // region Attributes
+    /**
+     * @link https://github.com/php-fig/http-message
+     * The following section of methods was derived from the package psr/http-message,
+     * released under the MIT License. Here is the copyright notice of this package:
+     *
+     * Copyright (c) 2014 PHP Framework Interoperability Group
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+
+    /**
+     * Retrieve attributes derived from the message.
+     *
+     * The message "attributes" may be used to allow injection of any
+     * parameters derived from the message: e.g., the results of method
+     * match operations; authorization; etc. Attributes will be application and message specific,
+     * and CAN be mutable.
+     * @link https://www.php-fig.org/psr/psr-7/#321-psrhttpmessageserverrequestinterface
+     * for the original text this was derived from
+     *
+     * @return array<string,mixed>
+     */
+    public function getAttributes(): array;
+    /**
+     * Retrieve a single derived message attribute.
+     *
+     * Retrieves a single derived message attribute as described in
+     * getAttributes(). If the attribute has not been previously set, returns
+     * the default value as provided.
+     *
+     * This method obviates the need for a hasAttribute() method, as it allows
+     * specifying a default value to return if the attribute is not found.
+     * @link https://www.php-fig.org/psr/psr-7/#321-psrhttpmessageserverrequestinterface
+     * for the original text this was derived from
+     *
+     * @see getAttributes()
+     */
+    public function getAttribute(string $key, mixed $default = null): mixed;
+    /**
+     * Return an instance with the specified derived message attribute.
+     *
+     * This method allows setting a single derived message attribute as
+     * described in getAttributes().
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * updated attribute.
+     * @link https://www.php-fig.org/psr/psr-7/#321-psrhttpmessageserverrequestinterface
+     * for the original text this was derived from
+     */
+    public function withAttribute(string $key, mixed $value): static;
+    // endregion
 }
