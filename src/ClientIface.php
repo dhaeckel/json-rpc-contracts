@@ -9,17 +9,17 @@ use Haeckel\JsonRpcServerContract\{Message, Response};
 interface ClientIface
 {
     public function sendRequest(
-        string $address,
+        string|\Stringable $address,
         Message\RequestIface $request,
     ): Response\SuccessIface|Response\ErrorIface;
 
     public function sendBatch(
-        string $address,
+        string|\Stringable $address,
         Message\BatchRequestIface $batchRequest,
     ): null|Response\BatchIface|Response\ErrorIface;
 
     public function sendNotification(
-        string $address,
+        string|\Stringable $address,
         Message\NotificationIface $notification,
     ): void;
 }
